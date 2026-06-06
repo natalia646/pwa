@@ -1,5 +1,5 @@
-import listTodoIcon from "./assets/icons/list_todo_icon.svg";
-import settingsIcon from "./assets/icons/settings_icon.svg";
+import listTodoIcon from "../assets/icons/list_todo_icon.svg";
+import settingsIcon from "../assets/icons/settings_icon.svg";
 
 export const UserSideBar = () => {
   return (
@@ -19,7 +19,6 @@ export const UserSideBar = () => {
 
       <div className="mx-6 border-t border-[#e5e7eb]" />
 
-      {/* Nav */}
       <nav className="flex flex-col gap-1 px-4 mt-4">
         <button className="flex items-center gap-3 px-4 py-3.5 rounded-xl bg-[#f3f4f6] text-[#333] font-bold text-base w-full text-left">
           <img src={listTodoIcon} alt="" />
