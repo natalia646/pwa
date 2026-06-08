@@ -28,7 +28,7 @@ export default function App() {
 
           {lists.length > 0 && ( 
             <div>
-              <Filter activeCount={activeCount} />
+              {/* <Filter activeCount={activeCount} /> */}
               <div className="flex flex-col gap-3">
                 {lists.map((task) => (
                   <TaskItem key={task.id} task={task} />
