@@ -1,4 +1,4 @@
-export const Filter = ({ activeCount }) => {
+export const Filter = ({ activeCount }: { activeCount: number }) => {
   return (
     <div className="mb-4 flex items-center justify-between text-sm md:text-base">
       <div className="text-[#6a7282]">
