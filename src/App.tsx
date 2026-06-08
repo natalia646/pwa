@@ -2,16 +2,18 @@ import { TaskItem } from "./components/Task";
 import { Filter } from "./components/Filter";
 import { InputRow } from "./components/InputRow";
 import { db } from "./db/db";
+import { addTodo } from "./db/todoService";
 import { useLiveQuery } from "dexie-react-hooks";
+import type { Task } from "./types/Todo.type";
 
 export default function App() {
-  const lists = useLiveQuery(() => db.todos.toArray());
+  const lists = useLiveQuery<Task[]>(() => db.todos.toArray());
   const activeCount = lists?.filter((t) => !t.completed).length ?? 0;
 
   if (!lists) return null;
 
   const handleAddTask = async (text: string) => {
-    await db.todos.add({ todo: text, completed: false, userId: 1 });
+    await addTodo({ todo: text, completed: false, userId: 1 });
   };
 
   return (
@@ -24,7 +26,7 @@ export default function App() {
 
           <InputRow handleAddTask={handleAddTask} />
 
-          {lists.length > 0 && (
+          {lists.length > 0 && ( 
             <div>
               <Filter activeCount={activeCount} />
               <div className="flex flex-col gap-3">

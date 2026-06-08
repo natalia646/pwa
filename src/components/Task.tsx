@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { db } from "../db/db";
+import { updateTodo, deleteTodo } from "../db/todoService";
 import pencilIcon from "../assets/icons/pencil_icon.svg";
 import trashIcon from "../assets/icons/trash_icon.svg";
 import checkboxUnchecked from "../assets/icons/checkbox_unchecked.svg";
@@ -12,17 +12,17 @@ export const TaskItem: FC<{ task: Task }> = ({ task }) => {
   const [editValue, setEditValue] = useState(task.todo);
 
   const handleToggle = () => {
-    db.todos.update(task.id!, { completed: !task.completed });
+    updateTodo(task.id!, { completed: !task.completed });
   };
 
   const handleDelete = () => {
-    db.todos.delete(task.id!);
+    deleteTodo(task.id!);
   };
 
   const saveEdit = () => {
     const trimmed = editValue.trim();
     if (trimmed && trimmed !== task.todo) {
-      db.todos.update(task.id!, { todo: trimmed });
+      updateTodo(task.id!, { todo: trimmed });
     } else {
       setEditValue(task.todo);
     }
@@ -62,7 +62,10 @@ export const TaskItem: FC<{ task: Task }> = ({ task }) => {
         </span>
       )}
 
-      <button className="shrink-0 p-1" onClick={() => { setEditValue(task.todo); setIsEditing(true); }}>
+      <button
+        className="shrink-0 p-1"
+        onClick={() => { setEditValue(task.todo); setIsEditing(true); }}
+      >
         <img src={pencilIcon} alt="edit" />
       </button>
       <button className="shrink-0 p-1" onClick={handleDelete}>

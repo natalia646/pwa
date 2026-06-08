@@ -9,6 +9,10 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )
 
+import { syncNow } from './db/todoService'
+
+window.addEventListener('online', () => { syncNow() })
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
