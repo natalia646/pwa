@@ -9,6 +9,10 @@ export async function populate() {
       console.log("Fetched tasks: ", res);
       return res.json();
     })
+    .then((data) => {
+      console.log("Parsed tasks: ", data.todos);
+      return data.todos;
+    })
     .catch((err) => {
       console.error("Failed to fetch tasks: ", err);
       return [];
