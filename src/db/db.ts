@@ -8,7 +8,7 @@ const db = new Dexie("TodosDatabase") as Dexie & {
 
 
 db.version(1).stores({
-  todos: "++id, todo, completed, userId",
+  todos: "id, todo, completed, userId",
 });
 
 db.on("populate", populate);
