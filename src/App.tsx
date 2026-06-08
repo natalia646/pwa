@@ -1,5 +1,5 @@
 import { TaskItem } from "./components/Task";
-import { Filter } from "./components/Filter";
+// import { Filter } from "./components/Filter";
 import { InputRow } from "./components/InputRow";
 import { db } from "./db/db";
 import { addTodo } from "./db/todoService";
@@ -8,7 +8,7 @@ import type { Task } from "./types/Todo.type";
 
 export default function App() {
   const lists = useLiveQuery<Task[]>(() => db.todos.toArray());
-  const activeCount = lists?.filter((t) => !t.completed).length ?? 0;
+  // const activeCount = lists?.filter((t) => !t.completed).length ?? 0;
 
   if (!lists) return null;
 
